@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.android.elliotmiller.week5appem197.fragments.Home;
+import com.android.elliotmiller.week5appem197.fragments.Record;
 
-public class MainActivity extends AppCompatActivity implements Home.HomeInterface {
+public class MainActivity extends AppCompatActivity implements Home.HomeInterface, Record.RecordInterface {
     private final static String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +27,14 @@ public class MainActivity extends AppCompatActivity implements Home.HomeInterfac
     @Override
     public void addNewStudentRecord() {
         Log.d(TAG, "Add new student record");
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_holder, Record.newInstance());
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+    @Override
+    public void onRecordAdded() {
+        Log.d(TAG, "New Record Added");
     }
 }
