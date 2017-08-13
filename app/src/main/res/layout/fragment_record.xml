@@ -11,6 +11,7 @@
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp">
@@ -25,6 +26,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_fn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp">
@@ -39,6 +41,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_ln"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -52,6 +55,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_c_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -65,6 +69,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_c_n"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -78,6 +83,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_c_s"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

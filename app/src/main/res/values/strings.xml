@@ -13,4 +13,5 @@
     <string name="save_record">Save</string>
     <string name="grade">Grade</string>
     <string name="score">Score</string>
+    <string name="required">Field Required.</string>
 </resources>

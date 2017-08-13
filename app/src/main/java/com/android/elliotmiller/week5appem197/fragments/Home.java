@@ -1,13 +1,18 @@
 package com.android.elliotmiller.week5appem197.fragments;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.elliotmiller.week5appem197.R;
+import com.android.elliotmiller.week5appem197.model.DBHelper;
+import com.android.elliotmiller.week5appem197.recyclerviewAdapters.HomeAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +23,7 @@ import com.android.elliotmiller.week5appem197.R;
 public class Home extends Fragment {
 
     private HomeInterface mListener;
+    private RecyclerView recyclerView;
 
     public Home() {
         // Required empty public constructor
@@ -35,7 +41,21 @@ public class Home extends Fragment {
                 mListener.addNewStudentRecord();
             }
         });
+        recyclerView = view.findViewById(R.id.rv_home);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
         return view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Cursor cursor = new DBHelper(getContext()).getAllRecords();
+        recyclerView.setAdapter(new HomeAdapter(getContext(), cursor, mListener));
+        if( cursor.getCount() > 0) {
+            getView().getRootView().findViewById(R.id.tv_no_records).setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -62,7 +82,7 @@ public class Home extends Fragment {
      * activity.
      */
     public interface HomeInterface {
-        void onStudentSelected(String id);
+        void onStudentSelected(String studentId, String fName, String lName);
         void addNewStudentRecord();
     }
 }

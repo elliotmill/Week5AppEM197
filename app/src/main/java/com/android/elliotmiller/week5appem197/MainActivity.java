@@ -1,5 +1,6 @@
 package com.android.elliotmiller.week5appem197;
 
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,8 +21,8 @@ public class MainActivity extends AppCompatActivity implements Home.HomeInterfac
     }
 
     @Override
-    public void onStudentSelected(String id) {
-        Log.d(TAG, "Student with id " + id + " selected.");
+    public void onStudentSelected(String studentId, String fName, String lName) {
+        Log.d(TAG, "Add student: " + studentId + " | " + fName + " | " + lName );
     }
 
     @Override
@@ -34,7 +35,9 @@ public class MainActivity extends AppCompatActivity implements Home.HomeInterfac
     }
 
     @Override
-    public void onRecordAdded() {
-        Log.d(TAG, "New Record Added");
+    public void onRecordAdded(String classId, String className) {
+        Snackbar.make(findViewById(R.id.fragment_holder), classId + " (" + className + ") Saved", Snackbar.LENGTH_SHORT).show();
+        getSupportFragmentManager().popBackStack();
+        Log.d(TAG, "New Record Added: " + classId + " - " + className);
     }
 }
