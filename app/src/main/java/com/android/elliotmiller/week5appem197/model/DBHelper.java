@@ -64,6 +64,10 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_NAME, ALL_COLUMNS, COLUMN_STUDENT_ID + " = ?", new String[]{id}, null, null, null);
     }
+    public synchronized Cursor getClassById(String id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(TABLE_NAME, ALL_COLUMNS, COLUMN_CLASS_ID + " = ?", new String[]{id}, null, null, null);
+    }
 
     public synchronized Cursor getAllRecords() {
         SQLiteDatabase db = this.getReadableDatabase();

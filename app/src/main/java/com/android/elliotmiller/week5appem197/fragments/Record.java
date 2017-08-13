@@ -2,6 +2,8 @@ package com.android.elliotmiller.week5appem197.fragments;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -56,9 +58,55 @@ public class Record extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_record, container, false);
         etId = view.findViewById(R.id.et_id);
+        etId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                DBHelper db = new DBHelper(getContext());
+                Cursor cursor = db.getStudentById(charSequence.toString());
+                if (cursor.moveToNext()) {
+                    etFirstName.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_FIRST_NAME)));
+                    etLastName.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_LAST_NAME)));
+                    etFirstName.setEnabled(false);
+                    etLastName.setEnabled(false);
+                } else {
+                    etFirstName.setText("");
+                    etLastName.setText("");
+                    etFirstName.setEnabled(true);
+                    etLastName.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
         etFirstName = view.findViewById(R.id.et_first_name);
         etLastName = view.findViewById(R.id.et_last_name);
         etClassId = view.findViewById(R.id.et_class_id);
+        etClassId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                DBHelper db = new DBHelper(getContext());
+                Cursor cursor = db.getClassById(charSequence.toString());
+                if (cursor.moveToNext()) {
+                    etClassName.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CLASS_NAME)));
+                    etClassName.setEnabled(false);
+                } else {
+                    etClassName.setText("");
+                    etClassName.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
         etClassName = view.findViewById(R.id.et_class_name);
         etClassScore = view.findViewById(R.id.et_score);
         view.findViewById(R.id.btn_save).setOnClickListener(this);
