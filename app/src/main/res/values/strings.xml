@@ -11,4 +11,6 @@
     <string name="class_id">Class ID</string>
     <string name="class_name">Class Name</string>
     <string name="save_record">Save</string>
+    <string name="grade">Grade</string>
+    <string name="score">Score</string>
 </resources>
