@@ -47,6 +47,90 @@ public class DBHelper extends SQLiteOpenHelper {
                 + COLUMN_CLASS_SCORE + " TEXT"
                 + ")";
         sqLiteDatabase.execSQL(CREATE_CONTACTS_TABLE);
+        insertDefaultUsers(sqLiteDatabase);
+    }
+
+    private void insertDefaultUsers(SQLiteDatabase db) {
+        ContentValues cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "100");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "Biology");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "1");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Sally");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Smith");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "70");
+        db.insert(TABLE_NAME, null, cv1);
+
+        ContentValues cv2 = new ContentValues();
+        cv2.put(DBHelper.COLUMN_CLASS_ID, "110");
+        cv2.put(DBHelper.COLUMN_CLASS_NAME, "Gym");
+        cv2.put(DBHelper.COLUMN_STUDENT_ID, "1");
+        cv2.put(DBHelper.COLUMN_FIRST_NAME, "Sally");
+        cv2.put(DBHelper.COLUMN_LAST_NAME, "Smith");
+        cv2.put(DBHelper.COLUMN_CLASS_SCORE, "90");
+        db.insert(TABLE_NAME, null, cv2);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "120");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "English");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "2");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Mark");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Front");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "40");
+        db.insert(TABLE_NAME, null, cv1);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "110");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "Gym");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "2");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Mark");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Front");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "10");
+        db.insert(TABLE_NAME, null, cv1);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "130");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "Science");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "3");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Rick");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Hart");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "85");
+        db.insert(TABLE_NAME, null, cv1);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "100");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "Biology");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "3");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Rick");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Hart");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "90");
+        db.insert(TABLE_NAME, null, cv1);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "110");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "Gym");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "3");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Rick");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Hart");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "45");
+        db.insert(TABLE_NAME, null, cv1);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "140");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "Computers");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "4");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Justin");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Jones");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "45");
+        db.insert(TABLE_NAME, null, cv1);
+
+        cv1 = new ContentValues();
+        cv1.put(DBHelper.COLUMN_CLASS_ID, "120");
+        cv1.put(DBHelper.COLUMN_CLASS_NAME, "English");
+        cv1.put(DBHelper.COLUMN_STUDENT_ID, "4");
+        cv1.put(DBHelper.COLUMN_FIRST_NAME, "Justin");
+        cv1.put(DBHelper.COLUMN_LAST_NAME, "Jones");
+        cv1.put(DBHelper.COLUMN_CLASS_SCORE, "70");
+        db.insert(TABLE_NAME, null, cv1);
     }
 
     @Override
