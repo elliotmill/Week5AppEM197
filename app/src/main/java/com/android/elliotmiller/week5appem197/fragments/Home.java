@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.android.elliotmiller.week5appem197.R;
 import com.android.elliotmiller.week5appem197.model.DBHelper;
 import com.android.elliotmiller.week5appem197.recyclerviewAdapters.HomeAdapter;
+import com.android.elliotmiller.week5appem197.recyclerviewAdapters.StudentRecordAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,8 +52,8 @@ public class Home extends Fragment {
     public void onResume(){
         super.onResume();
         Cursor cursor = new DBHelper(getContext()).getAllRecords();
-        recyclerView.setAdapter(new HomeAdapter(getContext(), cursor, mListener));
         if( cursor.getCount() > 0) {
+            recyclerView.setAdapter(new HomeAdapter(getContext(), cursor, mListener));
             getView().getRootView().findViewById(R.id.tv_no_records).setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }

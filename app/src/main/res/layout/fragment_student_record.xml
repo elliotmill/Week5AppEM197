@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.android.elliotmiller.week5appem197.fragments.StudentRecord">
+
+    <TextView
+        android:id="@+id/tv_student_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Azeez Olaniran"
+        android:padding="5dp"
+        android:background="@color/course_id_bg"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_student_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

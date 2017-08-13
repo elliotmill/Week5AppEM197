@@ -3,45 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="5dp"
-    android:paddingRight="15dp"
-    android:paddingLeft="5dp"
-    android:background="?android:attr/selectableItemBackground"
-    android:clickable="true">
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/id_background"
             android:padding="3dp"
-            android:layout_gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:paddingLeft="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_class_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:textColor="@color/colorPrimary"
             android:background="@drawable/course_id_bg"
+            android:textColor="@color/colorPrimary"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         <TextView
             android:id="@+id/tv_class_name"
@@ -58,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grade_bg"
-            android:paddingBottom="5dp"
             android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:gravity="center"
@@ -70,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grade_bg"
-            android:padding="5dp"
             android:gravity="center"
+            android:padding="5dp"
             android:layout_marginLeft="3dp"
             android:layout_marginStart="3dp"
             android:textColor="@color/divider"

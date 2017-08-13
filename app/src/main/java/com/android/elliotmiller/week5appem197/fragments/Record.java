@@ -95,6 +95,7 @@ public class Record extends Fragment implements View.OnClickListener {
                 String className = etClassName.getText().toString();
                 cv.put(DBHelper.COLUMN_CLASS_ID, classId);
                 cv.put(DBHelper.COLUMN_CLASS_NAME, className);
+                cv.put(DBHelper.COLUMN_STUDENT_ID, etId.getText().toString());
                 cv.put(DBHelper.COLUMN_FIRST_NAME, etFirstName.getText().toString());
                 cv.put(DBHelper.COLUMN_LAST_NAME, etLastName.getText().toString());
                 cv.put(DBHelper.COLUMN_CLASS_SCORE, etClassScore.getText().toString());

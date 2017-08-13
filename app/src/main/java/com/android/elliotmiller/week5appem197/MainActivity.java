@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.android.elliotmiller.week5appem197.fragments.Home;
 import com.android.elliotmiller.week5appem197.fragments.Record;
+import com.android.elliotmiller.week5appem197.fragments.StudentRecord;
 
 public class MainActivity extends AppCompatActivity implements Home.HomeInterface, Record.RecordInterface {
     private final static String TAG = MainActivity.class.getSimpleName();
@@ -22,7 +23,12 @@ public class MainActivity extends AppCompatActivity implements Home.HomeInterfac
 
     @Override
     public void onStudentSelected(String studentId, String fName, String lName) {
-        Log.d(TAG, "Add student: " + studentId + " | " + fName + " | " + lName );
+        Log.d(TAG, "Select student: " + studentId + " | " + fName + " | " + lName );
+        StudentRecord sR = StudentRecord.newInstance(studentId, fName + " " + lName);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_holder, sR);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     @Override

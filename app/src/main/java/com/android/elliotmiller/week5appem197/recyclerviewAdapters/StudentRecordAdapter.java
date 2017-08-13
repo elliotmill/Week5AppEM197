@@ -16,35 +16,29 @@ import com.android.elliotmiller.week5appem197.model.DBHelper;
  * Created by azeezolaniran on 13/08/2017.
  */
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
+public class StudentRecordAdapter extends RecyclerView.Adapter<StudentRecordAdapter.HomeViewHolder> {
 
-    private final Home.HomeInterface mListener;
     private Cursor cursor;
     private Context context;
 
-    public HomeAdapter(Context ctx, Cursor cs, Home.HomeInterface mLstnr) {
+    public StudentRecordAdapter(Context ctx, Cursor cs) {
         this.context = ctx;
         this.cursor = cs;
-        this.mListener = mLstnr;
     }
 
     @Override
     public HomeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.records_item, null);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.student_records_item, null);
         return new HomeViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(HomeViewHolder holder, int position) {
         cursor.moveToPosition(position);
-        holder.tvId.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_STUDENT_ID)));
-        holder.tvName.setText(
-                cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_FIRST_NAME))
-                + " "
-                + cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_LAST_NAME))
+        holder.tvId.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CLASS_ID)));
+        holder.tvClassName.setText(
+                cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CLASS_NAME))
         );
-        holder.tvClassId.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CLASS_ID)));
-        holder.tvClassName.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CLASS_NAME)));
         holder.tvClassScore.setText(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CLASS_SCORE)));
         holder.tvClassGrade.setText(
                 DBHelper.getGradeFromScore(
@@ -60,27 +54,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     class HomeViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvId, tvName, tvClassId, tvClassName, tvClassScore, tvClassGrade;
+        TextView tvId, tvClassName, tvClassScore, tvClassGrade;
 
         public HomeViewHolder(View itemView) {
             super(itemView);
             tvId = itemView.findViewById(R.id.tv_id);
-            tvName = itemView.findViewById(R.id.tv_name);
-            tvClassId = itemView.findViewById(R.id.tv_class_id);
             tvClassName = itemView.findViewById(R.id.tv_class_name);
             tvClassScore = itemView.findViewById(R.id.tv_score);
             tvClassGrade = itemView.findViewById(R.id.tv_grade);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    cursor.moveToPosition(getAdapterPosition());
-                    mListener.onStudentSelected(
-                            cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_STUDENT_ID)),
-                            cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_FIRST_NAME)),
-                            cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_LAST_NAME))
-                    );
-                }
-            });
         }
     }
 }
